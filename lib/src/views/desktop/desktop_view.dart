@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hr_app/src/views/desktop/desktop_annoucement.dart';
-import 'package:hr_app/src/views/desktop/desktop_calender.dart';
-import 'package:hr_app/src/views/desktop/desktop_employees.dart';
-import 'package:hr_app/src/views/desktop/desktop_holiday.dart';
+import 'package:hr_app/src/views/desktop/annoucement_screen_desktop.dart';
+import 'package:hr_app/src/views/desktop/calender_screen_desktop.dart';
+import 'package:hr_app/src/views/desktop/employees_screen_desktop.dart';
+import 'package:hr_app/src/views/desktop/holiday_screen_desktop.dart';
+import 'package:hr_app/src/views/desktop/settings_screen_desktop.dart';
 import 'package:hr_app/src/views/home.dart';
 import 'package:hr_app/src/views/leave_applications.dart';
 import 'package:hr_app/src/views/notification.dart';
@@ -16,19 +17,20 @@ class DesktopView extends StatefulWidget {
 }
 
 class _DesktopViewState extends State<DesktopView> {
-  int _currentIndex = 0;
+  int _selectedIndex = 0;
 
-  final List<Widget> _views = const [
-    Home(),
-    DesktopCalender(),
-    DesktopAnnouncement(),
-    TeamsScreen(),
-    DesktopEmployees(),
-    LeaveApplicationScreen(),
-    Placeholder(),
-    DesktopHoliday(),
-    NotificationScreen(),
-    Placeholder(),
+  final List<Widget> _views = [
+    const Home(),
+    const CalenderScreenDesktop(),
+    const AnnouncementScreenDesktop(),
+    const TeamsScreen(),
+    const EmployeesScreenDesktop(),
+    const LeaveApplicationScreen(),
+    const Placeholder(),
+    const HolidayScreenDesktop(),
+    const SettingsScreenDesktop(),
+    const NotificationScreen(),
+    const Placeholder(),
   ];
 
   @override
@@ -55,20 +57,20 @@ class _DesktopViewState extends State<DesktopView> {
                 ListTile(
                   leading: const Icon(Icons.home),
                   title: const Text('Home'),
-                  selected: _currentIndex == 0,
+                  selected: _selectedIndex == 0,
                   onTap: () {
                     setState(() {
-                      _currentIndex = 0;
+                      _selectedIndex = 0;
                     });
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.calendar_today),
                   title: const Text('My calendar'),
-                  selected: _currentIndex == 1,
+                  selected: _selectedIndex == 1,
                   onTap: () {
                     setState(() {
-                      _currentIndex = 1;
+                      _selectedIndex = 1;
                     });
                   },
                 ),
@@ -77,7 +79,7 @@ class _DesktopViewState extends State<DesktopView> {
                   title: const Text('Announcements'),
                   onTap: () {
                     setState(() {
-                      _currentIndex = 2;
+                      _selectedIndex = 2;
                     });
                   },
                 ),
@@ -87,7 +89,7 @@ class _DesktopViewState extends State<DesktopView> {
                   title: const Text('Teams management'),
                   onTap: () {
                     setState(() {
-                      _currentIndex = 3;
+                      _selectedIndex = 3;
                     });
                   },
                 ),
@@ -96,16 +98,16 @@ class _DesktopViewState extends State<DesktopView> {
                   title: const Text('Employees management'),
                   onTap: () {
                     setState(() {
-                      _currentIndex = 4;
+                      _selectedIndex = 4;
                     });
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.settings),
+                  leading: const Icon(Icons.settings_applications),
                   title: const Text('Leave applications'),
                   onTap: () {
                     setState(() {
-                      _currentIndex = 5;
+                      _selectedIndex = 5;
                     });
                   },
                 ),
@@ -119,9 +121,27 @@ class _DesktopViewState extends State<DesktopView> {
                   title: const Text('Holiday management'),
                   onTap: () {
                     setState(() {
-                      _currentIndex = 7;
+                      _selectedIndex = 7;
                     });
                   },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('SettingsScreenDesktop'),
+                  onTap: () {
+                    setState(() {
+                      _selectedIndex = 8;
+                    });
+                  },
+                ),
+                const ListTile(
+                  leading: Icon(Icons.flight),
+                  title: Text('Applications'),
+                  // onTap: () {
+                  //   setState(() {
+                  //     _selectedIndex = 9;
+                  //   });
+                  // },
                 ),
                 const ListTile(
                   leading: Icon(Icons.bar_chart),
@@ -142,7 +162,7 @@ class _DesktopViewState extends State<DesktopView> {
           const Spacer(),
           Expanded(
             flex: 9,
-            child: _views[_currentIndex],
+            child: _views[_selectedIndex],
           ),
           const Spacer(),
         ],
