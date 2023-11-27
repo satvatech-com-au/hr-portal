@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hr_app/src/features/holidays/create_holiday.dart';
 import 'package:hr_app/src/models/holidays.dart';
-import 'package:hr_app/src/views/create_holiday.dart';
 
 class HolidayScreen extends StatefulWidget {
   const HolidayScreen({Key? key}) : super(key: key);

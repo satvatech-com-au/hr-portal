@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hr_app/src/widgets/custom_textfield.dart';
 
-class CreateEmployeeScreen extends StatefulWidget {
-  const CreateEmployeeScreen({Key? key}) : super(key: key);
+class CreateEmployee extends StatefulWidget {
+  const CreateEmployee({Key? key}) : super(key: key);
 
   @override
-  _CreateEmployeeScreenState createState() => _CreateEmployeeScreenState();
+  _CreateEmployeeState createState() => _CreateEmployeeState();
 }
 
-class _CreateEmployeeScreenState extends State<CreateEmployeeScreen>
+class _CreateEmployeeState extends State<CreateEmployee>
     with SingleTickerProviderStateMixin {
   final GlobalKey<FormBuilderState> _employmentDetailsFormKey =
       GlobalKey<FormBuilderState>();

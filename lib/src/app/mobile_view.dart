@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hr_app/src/views/announcement.dart';
-import 'package:hr_app/src/views/calender.dart';
-import 'package:hr_app/src/views/employees.dart';
-import 'package:hr_app/src/views/holidays.dart';
-import 'package:hr_app/src/views/home.dart';
-import 'package:hr_app/src/views/leave_applications.dart';
-import 'package:hr_app/src/views/more.dart';
-import 'package:hr_app/src/views/notification.dart';
-import 'package:hr_app/src/views/teams.dart';
+import 'package:hr_app/src/features/announcement/annoucement_screen.dart';
+import 'package:hr_app/src/features/calender/calender_mobile.dart';
+import 'package:hr_app/src/features/calender/widgets/create_activity.dart';
+import 'package:hr_app/src/features/employees/employees_mobile.dart';
+import 'package:hr_app/src/features/holidays/holidays.dart';
+import 'package:hr_app/src/features/home/home.dart';
+import 'package:hr_app/src/features/leaves/leave_applications.dart';
+import 'package:hr_app/src/features/more.dart';
+import 'package:hr_app/src/features/notifications/notification.dart';
+import 'package:hr_app/src/features/teams/teams.dart';
 
 class MobileView extends StatefulWidget {
   const MobileView({super.key});
@@ -21,7 +22,7 @@ class _MobileViewState extends State<MobileView> {
 
   final List<Widget> _views = [
     const Home(),
-    const Calender(),
+    const CalenderScreenMobile(),
     const NotificationScreen(),
     const More()
   ];
@@ -109,7 +110,7 @@ class _MobileViewState extends State<MobileView> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const AnnouncementScreen()));
+                        builder: (context) => const AnnoucementScreen()));
               },
             ),
             const Divider(),
@@ -130,7 +131,7 @@ class _MobileViewState extends State<MobileView> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EmployeesScreen()));
+                        builder: (context) => const EmployeesList()));
               },
             ),
             ListTile(
@@ -174,6 +175,17 @@ class _MobileViewState extends State<MobileView> {
           ],
         ),
       ),
+      floatingActionButton: _currentIndex == 1
+          ? FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CreateActivity()));
+              },
+            )
+          : null,
     );
   }
 }

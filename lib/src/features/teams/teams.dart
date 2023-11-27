@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:hr_app/src/features/teams/team_detail.dart';
 import 'package:hr_app/src/models/team.dart';
-import 'package:hr_app/src/views/mobile/team_detail.dart';
 
 class TeamsScreen extends StatelessWidget {
   const TeamsScreen({super.key});
@@ -19,6 +20,7 @@ class TeamsScreen extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
+                    flex: 2,
                     child: TextField(
                       // controller: _controller,
                       decoration: InputDecoration(
@@ -37,10 +39,12 @@ class TeamsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const Spacer(),
                   ElevatedButton(
                       onPressed: () {}, child: const Text('Create team'))
                 ],
               ),
+              const Gap(40),
               GridView.builder(
                 shrinkWrap: true,
                 itemCount: teams.length,

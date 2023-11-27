@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_app/src/views/create_employee.dart';
-import 'package:hr_app/src/views/employees.dart';
+import 'package:hr_app/src/features/employees/create_employee.dart';
+import 'package:hr_app/src/features/employees/employees_mobile.dart';
 
 class EmployeesScreenDesktop extends StatelessWidget {
   const EmployeesScreenDesktop({super.key});
@@ -9,8 +9,8 @@ class EmployeesScreenDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Row(
       children: [
-        Expanded(child: EmployeesScreen()),
-        Expanded(child: CreateEmployeeScreen())
+        Expanded(child: EmployeesList()),
+        Expanded(child: CreateEmployee())
       ],
     );
   }

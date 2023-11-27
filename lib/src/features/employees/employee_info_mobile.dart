@@ -7,9 +7,9 @@ import 'package:hr_app/src/widgets/employment_info.dart';
 import 'package:hr_app/src/widgets/leaves.dart';
 import 'package:hr_app/src/widgets/payroll.dart';
 
-class EmployeeInfoScreen extends StatelessWidget {
+class EmployeeInfoMobile extends StatelessWidget {
   final Member member;
-  const EmployeeInfoScreen({
+  const EmployeeInfoMobile({
     Key? key,
     required this.member,
   }) : super(key: key);

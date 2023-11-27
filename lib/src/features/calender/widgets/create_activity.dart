@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hr_app/src/models/activity.dart';
 
-class CreateActivityScreen extends StatefulWidget {
-  const CreateActivityScreen({Key? key}) : super(key: key);
+class CreateActivity extends StatefulWidget {
+  const CreateActivity({Key? key}) : super(key: key);
 
   @override
-  _CreateActivityScreenState createState() => _CreateActivityScreenState();
+  _CreateActivityState createState() => _CreateActivityState();
 }
 
-class _CreateActivityScreenState extends State<CreateActivityScreen> {
+class _CreateActivityState extends State<CreateActivity> {
   final titleController = TextEditingController();
   DateTime? selectedDate;
   TimeOfDay? selectedTime;

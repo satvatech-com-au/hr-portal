@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hr_app/src/app/desktop_view.dart';
+import 'package:hr_app/src/app/mobile_view.dart';
 import 'package:hr_app/src/responsive/responsive_layout.dart';
-import 'package:hr_app/src/views/desktop/desktop_view.dart';
-import 'package:hr_app/src/views/mobile_view.dart';
 
 void main() {
   runApp(const MyApp());

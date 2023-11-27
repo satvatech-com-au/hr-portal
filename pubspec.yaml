@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_form_builder: ^9.1.1
   gap: ^3.0.1
+  popup: ^0.0.1
+  popover: ^0.2.8+2
 
 dev_dependencies:
   flutter_test:

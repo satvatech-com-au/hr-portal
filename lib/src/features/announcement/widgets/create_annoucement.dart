@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/src/models/annoucement.dart';
 
-class CreateAnnouncementScreen extends StatefulWidget {
-  const CreateAnnouncementScreen({Key? key}) : super(key: key);
+class CreateAnnouncement extends StatefulWidget {
+  const CreateAnnouncement({Key? key}) : super(key: key);
 
   @override
-  _CreateAnnouncementScreenState createState() =>
-      _CreateAnnouncementScreenState();
+  _CreateAnnouncementState createState() => _CreateAnnouncementState();
 }
 
-class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
+class _CreateAnnouncementState extends State<CreateAnnouncement> {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
   DateTime? selectedDate;

@@ -1,16 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-void main() {
-  runApp(
-    const MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: LeaveApplicationScreen(),
-      ),
-    ),
-  );
-}
+import 'package:gap/gap.dart';
 
 class LeaveApplicationScreen extends StatelessWidget {
   const LeaveApplicationScreen({Key? key}) : super(key: key);
@@ -51,21 +40,37 @@ class LeaveApplicationList extends StatelessWidget {
   Widget build(BuildContext context) {
     List<LeaveApplication> leaveApplications = getLeaveApplications(status);
 
-    return ListView.builder(
+    return ListView.separated(
+      padding: const EdgeInsets.only(top: 10),
+      separatorBuilder: (context, index) => const SizedBox(
+        height: 7,
+      ),
       itemCount: leaveApplications.length,
       itemBuilder: (context, index) {
         final leaveApp = leaveApplications[index];
-        return ListTile(
-          title: Text(leaveApp.workerName),
-          subtitle: Text(
-              'From: ${DateFormat('yyyy-MM-dd').format(leaveApp.startDate)} - To: ${DateFormat('yyyy-MM-dd').format(leaveApp.endDate)}'),
-          trailing: ElevatedButton(
-            onPressed: () {
-              _handleLeaveApplication(leaveApp, status);
-            },
-            child: const Text('Review'),
-          ),
-        );
+        return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(leaveApp.workerName),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      _handleLeaveApplication(leaveApp, status);
+                    },
+                    child: const Text('View'),
+                  ),
+                  const Gap(10),
+                  ElevatedButton(
+                    onPressed: () {
+                      _handleLeaveApplication(leaveApp, status);
+                    },
+                    child: const Text('Decline'),
+                  ),
+                ],
+              ),
+            ]);
       },
     );
   }
@@ -87,6 +92,18 @@ class LeaveApplicationList extends StatelessWidget {
           endDate: DateTime(2023, 11, 28),
           status: LeaveStatus.pending,
         ),
+        LeaveApplication(
+          workerName: 'John Doe',
+          startDate: DateTime(2023, 11, 15),
+          endDate: DateTime(2023, 11, 19),
+          status: LeaveStatus.pending,
+        ),
+        LeaveApplication(
+          workerName: 'Jane Smith',
+          startDate: DateTime(2023, 11, 25),
+          endDate: DateTime(2023, 11, 28),
+          status: LeaveStatus.pending,
+        ),
       ];
     } else if (status == LeaveStatus.approved) {
       applications = [
@@ -96,9 +113,33 @@ class LeaveApplicationList extends StatelessWidget {
           endDate: DateTime(2023, 12, 5),
           status: LeaveStatus.approved,
         ),
+        LeaveApplication(
+          workerName: 'John Doe',
+          startDate: DateTime(2023, 11, 15),
+          endDate: DateTime(2023, 11, 19),
+          status: LeaveStatus.pending,
+        ),
+        LeaveApplication(
+          workerName: 'Jane Smith',
+          startDate: DateTime(2023, 11, 25),
+          endDate: DateTime(2023, 11, 28),
+          status: LeaveStatus.pending,
+        ),
       ];
     } else if (status == LeaveStatus.rejected) {
       applications = [
+        LeaveApplication(
+          workerName: 'John Doe',
+          startDate: DateTime(2023, 11, 15),
+          endDate: DateTime(2023, 11, 19),
+          status: LeaveStatus.pending,
+        ),
+        LeaveApplication(
+          workerName: 'Jane Smith',
+          startDate: DateTime(2023, 11, 25),
+          endDate: DateTime(2023, 11, 28),
+          status: LeaveStatus.pending,
+        ),
         LeaveApplication(
           workerName: 'Bob Wilson',
           startDate: DateTime(2023, 11, 10),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hr_app/src/views/desktop/annoucement_screen_desktop.dart';
-import 'package:hr_app/src/views/desktop/calender_screen_desktop.dart';
-import 'package:hr_app/src/views/desktop/employees_screen_desktop.dart';
-import 'package:hr_app/src/views/desktop/holiday_screen_desktop.dart';
-import 'package:hr_app/src/views/desktop/settings_screen_desktop.dart';
-import 'package:hr_app/src/views/home.dart';
-import 'package:hr_app/src/views/leave_applications.dart';
-import 'package:hr_app/src/views/notification.dart';
-import 'package:hr_app/src/views/teams.dart';
+import 'package:hr_app/src/features/announcement/annoucement_screen.dart';
+import 'package:hr_app/src/features/calender/calender_screen.dart';
+import 'package:hr_app/src/features/employees/employees_screen_desktop.dart';
+import 'package:hr_app/src/features/holidays/holiday_screen_desktop.dart';
+import 'package:hr_app/src/features/home/home.dart';
+import 'package:hr_app/src/features/leaves/leave_applications.dart';
+import 'package:hr_app/src/features/notifications/notification.dart';
+import 'package:hr_app/src/features/settings/settings_screen_desktop.dart';
+import 'package:hr_app/src/features/teams/teams.dart';
 
 class DesktopView extends StatefulWidget {
   const DesktopView({Key? key}) : super(key: key);
@@ -21,8 +21,8 @@ class _DesktopViewState extends State<DesktopView> {
 
   final List<Widget> _views = [
     const Home(),
-    const CalenderScreenDesktop(),
-    const AnnouncementScreenDesktop(),
+    const CalenderScreen(),
+    const AnnoucementScreen(),
     const TeamsScreen(),
     const EmployeesScreenDesktop(),
     const LeaveApplicationScreen(),
@@ -32,28 +32,18 @@ class _DesktopViewState extends State<DesktopView> {
     const NotificationScreen(),
     const Placeholder(),
   ];
-
+  bool isShowOptions = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             flex: 3,
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
-                const UserAccountsDrawerHeader(
-                  accountName: Text('Ashley Cole'),
-                  accountEmail: Text('cole08@email.com'),
-                  currentAccountPicture: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.person,
-                      size: 48,
-                    ),
-                  ),
-                ),
                 ListTile(
                   leading: const Icon(Icons.home),
                   title: const Text('Home'),
@@ -85,23 +75,40 @@ class _DesktopViewState extends State<DesktopView> {
                 ),
                 const Divider(),
                 ListTile(
-                  leading: const Icon(Icons.people),
-                  title: const Text('Teams management'),
-                  onTap: () {
-                    setState(() {
-                      _selectedIndex = 3;
-                    });
-                  },
-                ),
-                ListTile(
                   leading: const Icon(Icons.person),
-                  title: const Text('Employees management'),
+                  title: const Text('Management'),
                   onTap: () {
                     setState(() {
-                      _selectedIndex = 4;
+                      isShowOptions = !isShowOptions;
                     });
                   },
                 ),
+                if (isShowOptions)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading: const Icon(Icons.person),
+                          title: const Text('Employees management'),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = 4;
+                            });
+                          },
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.people),
+                          title: const Text('Teams management'),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = 3;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ListTile(
                   leading: const Icon(Icons.settings_applications),
                   title: const Text('Leave applications'),
@@ -127,7 +134,7 @@ class _DesktopViewState extends State<DesktopView> {
                 ),
                 ListTile(
                   leading: const Icon(Icons.settings),
-                  title: const Text('SettingsScreenDesktop'),
+                  title: const Text('Settings'),
                   onTap: () {
                     setState(() {
                       _selectedIndex = 8;
@@ -139,7 +146,7 @@ class _DesktopViewState extends State<DesktopView> {
                   title: Text('Applications'),
                   // onTap: () {
                   //   setState(() {
-                  //     _selectedIndex = 9;
+                  //     _selectedIndex = ;
                   //   });
                   // },
                 ),
@@ -162,7 +169,10 @@ class _DesktopViewState extends State<DesktopView> {
           const Spacer(),
           Expanded(
             flex: 9,
-            child: _views[_selectedIndex],
+            child: AnimatedSwitcher(
+              duration: const Duration(seconds: 1),
+              child: _views[_selectedIndex],
+            ),
           ),
           const Spacer(),
         ],
