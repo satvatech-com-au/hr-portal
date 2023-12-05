@@ -6,6 +6,8 @@ import 'package:hr_app/src/features/holidays/holiday_screen_desktop.dart';
 import 'package:hr_app/src/features/home/home.dart';
 import 'package:hr_app/src/features/leaves/leave_applications.dart';
 import 'package:hr_app/src/features/notifications/notification.dart';
+import 'package:hr_app/src/features/settings/attendance_settings.dart';
+import 'package:hr_app/src/features/settings/departments.dart';
 import 'package:hr_app/src/features/settings/settings_screen_desktop.dart';
 import 'package:hr_app/src/features/teams/teams.dart';
 
@@ -31,12 +33,15 @@ class _DesktopViewState extends State<DesktopView> {
     const SettingsScreenDesktop(),
     const NotificationScreen(),
     const Placeholder(),
+    const AttendanceSettings(),
+    const Departments()
   ];
   bool isShowOptions = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
@@ -76,7 +81,7 @@ class _DesktopViewState extends State<DesktopView> {
                 const Divider(),
                 ListTile(
                   leading: const Icon(Icons.person),
-                  title: const Text('Management'),
+                  title: const Text('Employee Management'),
                   onTap: () {
                     setState(() {
                       isShowOptions = !isShowOptions;
@@ -90,7 +95,7 @@ class _DesktopViewState extends State<DesktopView> {
                       children: [
                         ListTile(
                           leading: const Icon(Icons.person),
-                          title: const Text('Employees management'),
+                          title: const Text('Employees'),
                           onTap: () {
                             setState(() {
                               _selectedIndex = 4;
@@ -99,7 +104,7 @@ class _DesktopViewState extends State<DesktopView> {
                         ),
                         ListTile(
                           leading: const Icon(Icons.people),
-                          title: const Text('Teams management'),
+                          title: const Text('Teams Management'),
                           onTap: () {
                             setState(() {
                               _selectedIndex = 3;
@@ -132,15 +137,6 @@ class _DesktopViewState extends State<DesktopView> {
                     });
                   },
                 ),
-                ListTile(
-                  leading: const Icon(Icons.settings),
-                  title: const Text('Settings'),
-                  onTap: () {
-                    setState(() {
-                      _selectedIndex = 8;
-                    });
-                  },
-                ),
                 const ListTile(
                   leading: Icon(Icons.flight),
                   title: Text('Applications'),
@@ -154,6 +150,77 @@ class _DesktopViewState extends State<DesktopView> {
                   leading: Icon(Icons.bar_chart),
                   title: Text('Reporting'),
                 ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Settings'),
+                  onTap: () {
+                    setState(() {
+                      isShowOptions = !isShowOptions;
+                    });
+                  },
+                ),
+                if (isShowOptions)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          leading: const Icon(Icons.person),
+                          title: const Text('User setup'),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = 8;
+                            });
+                          },
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.person),
+                          title: const Text('Employee setup'),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = 8;
+                            });
+                          },
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.people),
+                          title: const Text('Payroll setup'),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = 3;
+                            });
+                          },
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.people),
+                          title: const Text('Attendance settings'),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = 11;
+                            });
+                          },
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.people),
+                          title: const Text('Leave setup'),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = 11;
+                            });
+                          },
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.people),
+                          title: const Text('Departments'),
+                          onTap: () {
+                            setState(() {
+                              _selectedIndex = 12;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 const Divider(),
                 const ListTile(
                   leading: Icon(Icons.info),

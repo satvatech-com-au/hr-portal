@@ -11,7 +11,7 @@ class AnnouncementScreenDesktop extends StatelessWidget {
       child: const Row(
         children: [
           Expanded(child: AnnouncementsLists()),
-          Expanded(child: CreateAnnouncement())
+          Expanded(child: CreateAnnouncement()),
         ],
       ),
     );
