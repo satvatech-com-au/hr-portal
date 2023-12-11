@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hr_app/src/models/geo_fencing_area.dart';
 
-class AttendanceSettings extends StatefulWidget {
-  const AttendanceSettings({super.key});
+class AttendanceSettingsScreen extends StatefulWidget {
+  const AttendanceSettingsScreen({super.key});
 
   @override
-  State<AttendanceSettings> createState() => _AttendanceSettingsState();
+  State<AttendanceSettingsScreen> createState() =>
+      _AttendanceSettingsScreenState();
 }
 
-class _AttendanceSettingsState extends State<AttendanceSettings> {
+class _AttendanceSettingsScreenState extends State<AttendanceSettingsScreen> {
   TimeOfDay? _selectedStartTime;
   final TextEditingController _startTimeController = TextEditingController();
 
@@ -237,7 +238,7 @@ class _GeoTableState extends State<GeoTable> {
               areas.length,
               (index) => DataRow(
                 cells: [
-                  DataCell(showEditIcon: true, Text(areas[index].name)),
+                  DataCell(Text(areas[index].name)),
                   DataCell(Text(areas[index].p1)),
                   DataCell(Text(areas[index].p2)),
                   DataCell(Text(areas[index].p2)),

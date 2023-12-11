@@ -6,10 +6,10 @@ import 'package:hr_app/src/features/holidays/holiday_screen_desktop.dart';
 import 'package:hr_app/src/features/home/home.dart';
 import 'package:hr_app/src/features/leaves/leave_applications.dart';
 import 'package:hr_app/src/features/notifications/notification.dart';
-import 'package:hr_app/src/features/settings/attendance_settings.dart';
+import 'package:hr_app/src/features/settings/.dart';
+import 'package:hr_app/src/features/settings/attendance.dart';
 import 'package:hr_app/src/features/settings/departments.dart';
 import 'package:hr_app/src/features/settings/leave.dart';
-import 'package:hr_app/src/features/settings/settings_screen_desktop.dart';
 import 'package:hr_app/src/features/teams/teams.dart';
 
 class DesktopView extends StatefulWidget {
@@ -34,7 +34,7 @@ class _DesktopViewState extends State<DesktopView> {
     const SettingsScreenDesktop(),
     const NotificationScreen(),
     const Placeholder(),
-    const AttendanceSettings(),
+    const AttendanceSettingsScreen(),
     const Departments(),
     const LeaveSetup()
   ];
