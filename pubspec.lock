@@ -83,6 +83,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  gap:
+    dependency: "direct main"
+    description:
+      name: gap
+      sha256: f19387d4e32f849394758b91377f9153a1b41d79513ef7668c088c77dbc6955d
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   intl:
     dependency: transitive
     description:
@@ -131,6 +139,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+  popover:
+    dependency: "direct main"
+    description:
+      name: popover
+      sha256: "59f4a55ebb484d012c8aaa273ad58eee571945231b71fb938c5a69f63b5a94d4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.8+2"
+  popup:
+    dependency: "direct main"
+    description:
+      name: popup
+      sha256: ffff2985b5c66bd7d6c9162c593df01ad8e896860e4b3a0a71644405fcd8d373
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

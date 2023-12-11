@@ -8,6 +8,7 @@ import 'package:hr_app/src/features/leaves/leave_applications.dart';
 import 'package:hr_app/src/features/notifications/notification.dart';
 import 'package:hr_app/src/features/settings/attendance_settings.dart';
 import 'package:hr_app/src/features/settings/departments.dart';
+import 'package:hr_app/src/features/settings/leave.dart';
 import 'package:hr_app/src/features/settings/settings_screen_desktop.dart';
 import 'package:hr_app/src/features/teams/teams.dart';
 
@@ -34,7 +35,8 @@ class _DesktopViewState extends State<DesktopView> {
     const NotificationScreen(),
     const Placeholder(),
     const AttendanceSettings(),
-    const Departments()
+    const Departments(),
+    const LeaveSetup()
   ];
   bool isShowOptions = false;
   @override
@@ -205,7 +207,7 @@ class _DesktopViewState extends State<DesktopView> {
                           title: const Text('Leave setup'),
                           onTap: () {
                             setState(() {
-                              _selectedIndex = 11;
+                              _selectedIndex = 13;
                             });
                           },
                         ),
